@@ -68,7 +68,7 @@ const App = () => {
       <ul>
         {Object.keys(processedData).map((customerID) => {
           return (
-            <li>
+            <li key={customerID}>
               <UsrPtsProfile
                 id={customerID}
                 customerData={processedData[customerID]}

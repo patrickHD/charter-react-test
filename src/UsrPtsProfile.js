@@ -41,20 +41,22 @@ export default ({ id, customerData }) => {
                       <th>Amount</th>
                       <th>Points</th>
                     </thead>
-                    {customerData[month]["records"].map((record) => {
-                      return (
-                        <tr>
-                          <td>{record.id}</td>
-                          <td>
-                            {record.date instanceof Date
-                              ? record.date.toISOString().substring(0, 10)
-                              : record.date.substring(0, 10)}
-                          </td>
-                          <td>${record.amount}</td>
-                          <td>{ptsCalc(record.amount)}</td>
-                        </tr>
-                      );
-                    })}
+                    <tbody>
+                      {customerData[month]["records"].map((record) => {
+                        return (
+                          <tr>
+                            <td>{record.id}</td>
+                            <td>
+                              {record.date instanceof Date
+                                ? record.date.toISOString().substring(0, 10)
+                                : record.date.substring(0, 10)}
+                            </td>
+                            <td>${record.amount}</td>
+                            <td>{ptsCalc(record.amount)}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
                   </table>
                 </div>
               );
