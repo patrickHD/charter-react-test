@@ -36,17 +36,20 @@ function processData(data) {
     let month = data[record].date.getMonth();
     let points = ptsCalc(data[record].amount);
     if (!groupedData[customerID]) {
-      groupedData[customerID] = {};
-      groupedData[customerID]["total"] = points;
-      groupedData[customerID][month] = {};
-      groupedData[customerID][month]["total"] = points;
-      groupedData[customerID][month]["records"] = [data[record]];
+      groupedData[customerID] = {
+        "total": points,
+        month: {
+          "total": points,
+          "records": [data[record]]
+        }
+      };
     } else {
       groupedData[customerID]["total"] += points;
       if (!groupedData[customerID][month]) {
-        groupedData[customerID][month] = {};
-        groupedData[customerID][month]["total"] = points;
-        groupedData[customerID][month]["records"] = [data[record]];
+        groupedData[customerID][month] = {
+          "total": points,
+          "records": [data[record]]
+        };
       } else {
         groupedData[customerID][month]["total"] += points;
         groupedData[customerID][month]["records"].push(data[record]);
